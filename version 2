@@ -1,0 +1,799 @@
+{
+	"id": "lgbtmap",
+	"title": {
+		"en": "LGBT Spaces Map"
+	},
+	"shortDescription": {
+		"en": "a map of LGBT spaces"
+	},
+	"description": {
+		"en": "a map of LGBT Spaces on OpenStreetMap all around the world"
+	},
+	"language": [
+		"en"
+	],
+	"maintainer": "",
+	"icon": "https://upload.wikimedia.org/wikipedia/commons/8/87/Circle-icons-rainbow.svg",
+	"version": "0",
+	"startLat": 0,
+	"startLon": 0,
+	"startZoom": 1,
+	"widenFactor": 0.05,
+	"socialImage": "https://facebook.com/mapbeks",
+	"layers": [{
+			"id": "hang_outs",
+			"name": {
+				"en": "Hang Outs"
+			},
+			"minzoom": 12,
+			"overpassTags": {
+				"and": [
+					"lgbtq~*",
+					{
+						"or": [
+							"amenity=bar",
+							"amenity=pub",
+							"amenity=nightclub"
+						]
+					}
+				]
+			},
+			"title": {
+				"render": {
+					"en": "{name}"
+				}
+			},
+			"description": {
+				"en": "asdas"
+			},
+			"tagRenderings": [{
+					"render": {
+						"en": "This space is callled <b>{name}<b/>."
+					},
+					"question": {
+						"en": "What is the name of this LGBT space?"
+					},
+					"freeform": {
+						"key": "name"
+					}
+				},
+				{
+					"freeform": {
+						"key": "amenity",
+						"addExtraTags": []
+					},
+					"render": {
+						"en": "This space is a {amenity}."
+					},
+					"question": {
+						"en": "What is this space?"
+					},
+					"mappings": [{
+							"if": {
+								"and": [
+									"amenity=bar"
+								]
+							},
+							"then": {
+								"en": "This is a <b>bar</b>."
+							}
+						},
+						{
+							"if": {
+								"and": [
+									"amenity=pub"
+								]
+							},
+							"then": {
+								"en": "This is a <b>pub</b>."
+							}
+						},
+						{
+							"if": {
+								"and": [
+									"amenity=nightclub"
+								]
+							},
+							"then": {
+								"en": "This is a <b>nightclub</b>."
+							}
+						}
+					]
+				},
+				{
+					"question": {
+						"en": "What is the audience of this place is?"
+					},
+					"freeform": {
+						"key": "lgbtq"
+					},
+					"render": {
+						"en": "LGBT are a <b>{lgbtq}</b> audience in this place."
+					},
+					"mappings": [{
+							"if": {
+								"and": [
+									"lgbtq=primary"
+								]
+							},
+							"then": {
+								"en": "This place caters <b>primarily</b> to LGBT individuals"
+							}
+						},
+						{
+							"if": {
+								"and": [
+									"lgbtq=welcome"
+								]
+							},
+							"then": {
+								"en": "LGBT individuals are <b>welcome</b> in this space."
+							}
+						},
+						{
+							"if": {
+								"and": [
+									"lgbtq=friendly"
+								]
+							},
+							"then": {
+								"en": "LGBT individuals are <b>welcome</b> in this space."
+							},
+							"hideInAnswer": true
+						}
+					],
+					"condition": {
+						"and": []
+					}
+				},
+				{
+					"render": {
+						"en": "<b>Opening Hours</b>{opening_hours_table(opening_hours)}"
+					},
+					"question": {
+						"en": "Is this the opening hours of {name}?"
+					},
+					"freeform": {
+						"key": "opening_hours",
+						"type": "opening_hours"
+					}
+				},
+				{
+					"render": {
+						"en": "<b><a href=\"tel:{contact:phone}\">{contact:phone}</a></b>"
+					},
+					"question": {
+						"en": "What is this place's phone number?"
+					},
+					"freeform": {
+						"key": "contact:phone"
+					}
+				},
+				{
+					"render": {
+						"en": "<b><a href = \"mailto: {contact:email}\">{contact:email}</a></b>"
+					},
+					"question": {
+						"en": "What is this place's email address?"
+					},
+					"freeform": {
+						"type": "email",
+						"key": "contact:email"
+					}
+				},
+				{
+					"render": {
+						"en": "<b><a href=\"{contact:website}\">Visit website</a></b>"
+					},
+					"question": {
+						"en": "What is this place's website?"
+					},
+					"freeform": {
+						"key": "contact:website",
+						"type": "url"
+					}
+				},
+				{
+					"render": {
+						"en": "<b><a href=\"{contact:facebook}\">Visit their Facebook page</a></b>"
+					},
+					"question": {
+						"en": "What is this place's Facebook page?"
+					},
+					"freeform": {
+						"key": "contact:facebook",
+						"type": "url"
+					}
+				},
+				{
+					"render": {
+						"en": "{reviews(name)}"
+					}
+				},
+				{
+					"render": {
+						"en": "{smoking}"
+					},
+					"question": {
+						"en": "Is smoking allowed?"
+					},
+					"freeform": {
+						"key": "smoking"
+					},
+					"mappings": [{
+							"if": {
+								"and": [
+									"smoking=yes"
+								]
+							},
+							"then": {
+								"en": "Yes! Smoking is <b>allowed</b>."
+							}
+						},
+						{
+							"if": {
+								"and": [
+									"smoking=no"
+								]
+							},
+							"then": {
+								"en": "No! Smoking is <b>not allowed</b>."
+							}
+						},
+						{
+							"if": {
+								"and": [
+									"smoking=outside"
+								]
+							},
+							"then": {
+								"en": "Smoking is <b>allowed outside</b>."
+							}
+						}
+					],
+					"condition": {
+						"and": []
+					}
+				}
+			],
+			"deletion": {
+				"softDeletionTags": {
+					"and": [
+						"disused:amenity:={amenity}",
+						"amenity="
+					]
+				},
+				"neededChangesets": 1
+			},
+			"allowMove": {
+				"enableRelocation": false,
+				"enableImproveAccuraccy": true
+			},
+			"hideUnderlayingFeaturesMinPercentage": 0,
+			"icon": {
+				"render": "https://svgshare.com/i/i1r.svg"
+			},
+			"width": {
+				"render": "8"
+			},
+			"iconSize": {
+				"render": "30,30,center"
+			},
+			"color": {
+				"render": "#00f"
+			},
+			"presets": [{
+					"tags": [
+						"amenity=bar",
+						"lgbtq=primary"
+					],
+					"title": {
+						"en": "LGBT bar"
+					},
+					"description": {
+						"en": "A bar where the primary audience are LGBT individuals. Bars are characterised by a noisy and vibrant atmosphere, similar to a party. They usually do not sell food to be eaten as a meal. The music is usually loud and you often have to stand."
+					}
+				},
+				{
+					"tags": [
+						"amenity=bar",
+						"lgbtq=welcome"
+					],
+					"title": {
+						"en": "LGBT-friendly bar"
+					},
+					"description": {
+						"en": "A bar that is LGBT friendly. The primary target audience is the general public but openly welcomes LGBT individuals.  Bars are characterised by a noisy and vibrant atmosphere, similar to a party. They usually do not sell food to be eaten as a meal. The music is usually loud and you often have to stand."
+					}
+				},
+				{
+					"tags": [
+						"amenity=pub",
+						"lgbtq=primary"
+					],
+					"title": {
+						"en": "LGBT pub"
+					},
+					"description": {
+						"en": "A pub where the primary audience are LGBT individuals. A pub is an establishment that sells alcoholic drinks that can be consumed on the premises. Pubs commonly sell food which also can be eaten on the premises. They are characterised by a traditional appearance and a relaxed atmosphere. You can usually sit down and there is usually no loud music to disturb conversation."
+					}
+				},
+				{
+					"tags": [
+						"amenity=pub",
+						"lgbtq=welcome"
+					],
+					"title": {
+						"en": "LGBT-friendly pub"
+					},
+					"description": {
+						"en": "A pub that is LGBT friendly. The primary target audience is the general public but openly welcomes LGBT individuals.  A pub is an establishment that sells alcoholic drinks that can be consumed on the premises. Pubs commonly sell food which also can be eaten on the premises. They are characterised by a traditional appearance and a relaxed atmosphere. You can usually sit down and there is usually no loud music to disturb conversation."
+					}
+				},
+				{
+					"tags": [
+						"amenity=nightclub",
+						"lgbtq=primary"
+					],
+					"title": {
+						"en": "LGBT nightclub"
+					},
+					"description": {
+						"en": "A nightclub where the primary audience are LGBT individuals. A nightclub is an entertainment venue during nighttime comprising a dance floor, lightshow, and a stage for live music or a disc jockey (DJ) who plays recorded music.  Nightclubs generally restrict access to people in terms of age, attire, personal belongings, and inappropriate behaviors. Unlike other entertainment venues, nightclubs are more likely to use bouncers to screen prospective patrons for entry."
+					}
+				},
+				{
+					"tags": [
+						"amenity=nightclub",
+						"lgbtq=welcome"
+					],
+					"title": {
+						"en": "LGBT-friendly nightclub"
+					},
+					"description": {
+						"en": "A nightclub that is LGBT friendly. The primary target audience is the general public but openly welcomes LGBT individuals. A nightclub is an entertainment venue during nighttime comprising a dance floor, lightshow, and a stage for live music or a disc jockey (DJ) who plays recorded music.  Nightclubs generally restrict access to people in terms of age, attire, personal belongings, and inappropriate behaviors. Unlike other entertainment venues, nightclubs are more likely to use bouncers to screen prospective patrons for entry."
+					}
+				}
+			],
+			"wayHandling": 1
+		},
+		{
+			"id": "health",
+			"name": {
+				"en": "Health"
+			},
+			"minzoom": 10,
+			"overpassTags": {
+				"and": [
+					"lgbtq~*",
+					{
+						"or": [
+							"amenity=doctors",
+							"amenity=clinic",
+							"amenity=hospital"
+						]
+					}
+				]
+			},
+			"title": {
+				"render": {
+					"en": "{name}"
+				}
+			},
+			"description": {
+				"en": "healtsh"
+			},
+			"tagRenderings": [{
+					"render": {
+						"en": "This LGBT space is callled {name}"
+					},
+					"question": {
+						"en": "What is the name of this LGBT space?"
+					},
+					"freeform": {
+						"key": "name"
+					}
+				},
+				{
+					"render": {
+						"en": "This is a/an {amenity}."
+					},
+					"question": {
+						"en": "What is this space?"
+					},
+					"freeform": {
+						"key": "amenity",
+						"addExtraTags": []
+					},
+					"condition": {
+						"and": []
+					},
+					"mappings": [{
+							"if": {
+								"and": [
+									"amenity=doctors"
+								]
+							},
+							"then": {
+								"en": "This is a <b>doctor's office</b>."
+							}
+						},
+						{
+							"if": {
+								"and": [
+									"amenity=clinic"
+								]
+							},
+							"then": {
+								"en": "This is a <b>clinic</b>."
+							}
+						},
+						{
+							"if": {
+								"and": [
+									"amenity=hospital"
+								]
+							},
+							"then": {
+								"en": "This is a <b>hospital</b>."
+							}
+						}
+					]
+				},
+				{
+					"render": {
+						"en": "LGBT are a <b>{lgbtq}</b> audience in this place."
+					},
+					"question": {
+						"en": "What is the audience of this place is?"
+					},
+					"freeform": {
+						"key": "lgbtq"
+					},
+					"mappings": [{
+							"if": {
+								"and": [
+									"lgbtq=primary"
+								]
+							},
+							"then": {
+								"en": "This place caters <b>primarily</b> to LGBT individuals."
+							}
+						},
+						{
+							"if": {
+								"and": [
+									"lgbtq=friendly"
+								]
+							},
+							"then": {
+								"en": "LGBT individuals are <b>welcome</b> in this space."
+							},
+							"hideInAnswer": true
+						},
+						{
+							"if": {
+								"and": [
+									"lgbtq=welcome"
+								]
+							},
+							"then": {
+								"en": "LGBT individuals are <b>welcome</b> in this space."
+							}
+						}
+					]
+				},
+				{
+					"question": {
+						"en": "More information about this place?"
+					},
+					"render": {
+						"en": "<b>More Information:</b> {description}"
+					},
+					"freeform": {
+						"key": "description"
+					}
+				},
+				{
+					"render": {
+						"en": "Opening Hours {opening_hours_table(opening_hours)}"
+					},
+					"question": {
+						"en": "Is this the opening hours of {name}"
+					},
+					"freeform": {
+						"key": "opening_hours",
+						"type": "opening_hours"
+					}
+				}
+			],
+      "deletion": {
+				"softDeletionTags": {
+					"and": [
+						"disused:amenity:={amenity}",
+						"amenity="
+					]
+				},
+				"neededChangesets": 1
+			},
+			"allowMove": {
+				"enableRelocation": false,
+				"enableImproveAccuraccy": true
+      },
+			"hideUnderlayingFeaturesMinPercentage": 0,
+			"icon": {
+				"render": "https://svgshare.com/i/i1s.svg"
+			},
+			"width": {
+				"render": "8"
+			},
+			"iconSize": {
+				"render": "30,30,center"
+			},
+			"color": {
+				"render": "#00f"
+			},
+			"presets": [],
+			"wayHandling": 1
+		},
+		{
+			"id": "community",
+			"name": {
+				"en": "Clubs, Centres, and Organizations"
+			},
+			"minzoom": 6,
+			"overpassTags": {
+				"and": [
+					"lgbtq~*",
+					{
+						"or": [
+							"office=ngo",
+							"office=association",
+							"amenity=community_centre",
+							"amenity=social_facility",
+							"amenity=place_of_worship"
+						]
+					}
+				]
+			},
+			"title": {
+				"render": {
+					"en": "{name}"
+				}
+			},
+			"description": {},
+			"tagRenderings": [{
+					"render": {
+						"en": "This place is callled <b>{name}</b>."
+					},
+					"question": {
+						"en": "What is the name of this place?"
+					},
+					"freeform": {
+						"key": "name"
+					}
+				},
+				{
+					"render": {
+						"en": "This is a/an <b>{amenity}</b>."
+					},
+					"question": {
+						"en": "What is this place?"
+					},
+					"freeform": {
+						"key": "amenity",
+						"type": "string",
+						"addExtraTags": []
+					},
+					"mappings": [{
+							"if": {
+								"and": [
+									"office=ngo"
+								]
+							},
+							"then": {
+								"en": "This is an <b>NGO or non-profit office</b>."
+							}
+						},
+						{
+							"if": {
+								"and": [
+									"office=association"
+								]
+							},
+							"then": {
+								"en": "This is an <b>organization</b>."
+							}
+						},
+						{
+							"if": {
+								"and": [
+									"amenity=community_centre"
+								]
+							},
+							"then": {
+								"en": "This is a <b>community center</b>."
+							}
+						},
+						{
+							"if": {
+								"and": [
+									"amenity=social_facility"
+								]
+							},
+							"then": {
+								"en": "This is a <b>social facility</b>."
+							}
+						},
+						{
+							"if": {
+								"and": [
+									"amenity=place_of_worship"
+								]
+							},
+							"then": {
+								"en": "This is a <b>place of worship</b>."
+							}
+						}
+					],
+					"condition": {
+						"and": []
+					}
+				},
+				{
+					"render": {
+						"en": "LGBT are a <b>{lgbtq}</b> audience in this place."
+					},
+					"question": {
+						"en": "What is the audience of this place is?"
+					},
+					"freeform": {
+						"key": "lgbtq",
+						"addExtraTags": []
+					},
+					"mappings": [{
+							"if": {
+								"and": [
+									"lgbtq=primary"
+								]
+							},
+							"then": {
+								"en": "This place caters <b>primarily</b> to LGBT individuals"
+							}
+						},
+						{
+							"if": {
+								"and": [
+									"lgbtq=welcome"
+								]
+							},
+							"then": {
+								"en": "LGBT individuals are <b>welcome</b> in this space."
+							}
+						},
+						{
+							"if": {
+								"and": [
+									"lgbtq=friendly"
+								]
+							},
+							"then": {
+								"en": "LGBT individuals are <b>welcome</b> in this space."
+							},
+							"hideInAnswer": true
+						}
+					]
+				},
+				{
+					"render": {
+						"en": "<b>Opening Hours</b> {opening_hours_table(opening_hours)}"
+					},
+					"question": {
+						"en": "Is this the opening hours of {name}?"
+					},
+					"freeform": {
+						"key": "opening_hours",
+						"type": "opening_hours"
+					}
+				},
+				{
+					"render": {
+						"en": "<b><a href=\"tel: {contact:phone}\">{contact:phone}</a></b>"
+					},
+					"question": {
+						"en": "What is this place's phone number?"
+					},
+					"freeform": {
+						"key": "contact:phone"
+					}
+				},
+				{
+					"render": {
+						"en": "<b><a href = \"mailto: {contact:email}\">{contact:email}</a></b>"
+					},
+					"question": {
+						"en": "What is this place's email address?"
+					},
+					"freeform": {
+						"key": "contact:email"
+					}
+				},
+				{
+					"render": {
+						"en": "<b><a href=\"{contact:website}\">Visit website</a></b>"
+					},
+					"question": {
+						"en": "What is this place's website?"
+					},
+					"freeform": {
+						"key": "contact:website"
+					}
+				},
+				{
+					"render": {
+						"en": " <b><a href=\"{contact:facebook}\">Visit their Facebook page</a></b>"
+					},
+					"question": {
+						"en": "What is this place's Facebook page?"
+					},
+					"freeform": {
+						"key": "contact:facebook"
+					}
+				}
+			],
+      "deletion": {
+				"softDeletionTags": {
+					"and": [
+						"disused:amenity:={amenity}",
+						"amenity="
+					]
+				},
+				"neededChangesets": 1
+			},
+			"allowMove": {
+				"enableRelocation": false,
+				"enableImproveAccuraccy": true
+			},
+			"hideUnderlayingFeaturesMinPercentage": 0,
+			"icon": {
+				"render": "https://upload.wikimedia.org/wikipedia/commons/8/87/Circle-icons-rainbow.svg"
+			},
+			"width": {
+				"render": "8"
+			},
+			"iconSize": {
+				"render": "30,30,center"
+			},
+			"color": {
+				"render": "#00f"
+			},
+			"presets": [{
+					"tags": [
+						"office=association",
+						"lgbtq=primary"
+					],
+					"title": {
+						"en": "LGBT organization"
+					},
+					"description": {
+						"en": "an organization, club, association dedicated primarily for LGBT individuals"
+					}
+				},
+				{
+					"tags": [
+						"office=association"
+					],
+					"title": {
+						"en": "LGBT-friendly organization"
+					},
+					"description": {
+						"en": "an organization which welcomes LGBT individuals"
+					}
+				}
+			],
+			"wayHandling": 1
+		}
+	],
+	"roamingRenderings": [],
+	"defaultBackgroundId": "osm"
+}
