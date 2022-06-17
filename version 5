@@ -141,58 +141,12 @@
 							},
 							"hideInAnswer": true
 						}
-					],
-					"condition": {
-						"and": []
-					}
+					]
 				},
-				{
-					"render": {
-						"en": "<b>Opening Hours</b>{opening_hours_table(opening_hours)}"
-					},
-					"question": {
-						"en": "Is this the opening hours of {name}?"
-					},
-					"freeform": {
-						"key": "opening_hours",
-						"type": "opening_hours"
-					}
-				},
-				{
-					"render": {
-						"en": "<b><a href=\"tel:{contact:phone}\">{contact:phone}</a></b>"
-					},
-					"question": {
-						"en": "What is this place's phone number?"
-					},
-					"freeform": {
-						"key": "contact:phone"
-					}
-				},
-				{
-					"render": {
-						"en": "<b><a href = \"mailto: {contact:email}\">{contact:email}</a></b>"
-					},
-					"question": {
-						"en": "What is this place's email address?"
-					},
-					"freeform": {
-						"type": "email",
-						"key": "contact:email"
-					}
-				},
-				{
-					"render": {
-						"en": "<b><a href=\"{contact:website}\">Visit website</a></b>"
-					},
-					"question": {
-						"en": "What is this place's website?"
-					},
-					"freeform": {
-						"key": "contact:website",
-						"type": "url"
-					}
-				},
+				"opening_hours",
+				"phone",
+				"email",
+				"website",
 				{
 					"render": {
 						"en": "<b><a href=\"{contact:facebook}\">Visit their Facebook page</a></b>"
@@ -205,11 +159,7 @@
 						"type": "url"
 					}
 				},
-				{
-					"render": {
-						"en": "{reviews(name)}"
-					}
-				},
+				"reviews",
 				{
 					"render": {
 						"en": "{smoking}"
@@ -221,13 +171,9 @@
 						"key": "smoking"
 					},
 					"mappings": [{
-							"if": {
-								"and": [
-									"smoking=yes"
-								]
-							},
+							"if": "smoking=yes",
 							"then": {
-								"en": "Yes! Smoking is <b>allowed</b>."
+								"en": "Smoking is <b>allowed</b>."
 							}
 						},
 						{
@@ -237,7 +183,7 @@
 								]
 							},
 							"then": {
-								"en": "No! Smoking is <b>not allowed</b>."
+								"en": "Smoking is <b>not allowed</b>."
 							}
 						},
 						{
@@ -250,10 +196,7 @@
 								"en": "Smoking is <b>allowed outside</b>."
 							}
 						}
-					],
-					"condition": {
-						"and": []
-					}
+					]
 				}
 			],
 			"deletion": {
@@ -269,7 +212,6 @@
 				"enableRelocation": false,
 				"enableImproveAccuraccy": true
 			},
-			"hideUnderlayingFeaturesMinPercentage": 0,
 			"icon": {
 				"render": "https://raw.githubusercontent.com/mapbeks/mapcomplete_lgbt/main/icons/4.svg"
 			},
@@ -402,30 +344,16 @@
 						"en": "What is this space?"
 					},
 					"freeform": {
-						"key": "amenity",
-						"addExtraTags": []
+						"key": "amenity"
 					},
-					"condition": {
-						"and": []
-					},
-					"mappings": [{
-							"if": {
-								"and": [
-									"amenity=doctors"
-								]
-							},
+					"mappings": [{"if":"amenity=doctors",
 							"then": {
 								"en": "This is a <b>doctor's office</b>."
 							}
 						},
 						{
-							"if": {
-								"and": [
-									"amenity=clinic"
-								]
-							},
-							"then": {
-								"en": "This is a <b>clinic</b>."
+							"if": "amenity=clinic",
+							"then": {"en": "This is a <b>clinic</b>."
 							}
 						},
 						{
@@ -483,30 +411,7 @@
 						}
 					]
 				},
-				{
-					"question": {
-						"en": "What is this place's phone number?"
-					},
-					"render": {
-						"en": "<b><a href=\"tel: {contact:phone}\">{contact:phone}</a></b>"
-					},
-					"freeform": {
-						"key": "contact:phone",
-						"type": "phone"
-					}
-				},
-				{
-					"render": {
-						"en": "<b><a href = \"mailto: {contact:email}\">{contact:email}</a></b>"
-					},
-					"question": {
-						"en": "What is this place's email address?"
-					},
-					"freeform": {
-						"key": "contact:email",
-						"type": "email"
-					}
-				},
+				"phone", "email", "website",
 				{
 					"question": {
 						"en": "More information about this place?"
@@ -518,18 +423,7 @@
 						"key": "description"
 					}
 				},
-				{
-					"render": {
-						"en": "Opening Hours {opening_hours_table(opening_hours)}"
-					},
-					"question": {
-						"en": "Is this the opening hours of {name}"
-					},
-					"freeform": {
-						"key": "opening_hours",
-						"type": "opening_hours"
-					}
-				}
+				"opening_hours"
 			],
 			"deletion": {
 				"softDeletionTags": {
@@ -544,7 +438,6 @@
 				"enableRelocation": false,
 				"enableImproveAccuraccy": true
 			},
-			"hideUnderlayingFeaturesMinPercentage": 0,
 			"icon": {
 				"render": "https://raw.githubusercontent.com/mapbeks/mapcomplete_lgbt/main/icons/1.svg"
 			},
@@ -605,9 +498,7 @@
 						"en": "What is this place?"
 					},
 					"freeform": {
-						"key": "amenity",
-						"type": "string",
-						"addExtraTags": []
+						"key": "amenity"
 					},
 					"mappings": [{
 							"if": {
@@ -659,10 +550,7 @@
 								"en": "This is a <b>place of worship</b>."
 							}
 						}
-					],
-					"condition": {
-						"and": []
-					}
+					]
 				},
 				{
 					"render": {
@@ -708,51 +596,9 @@
 						}
 					]
 				},
-				{
-					"render": {
-						"en": "<b>Opening Hours</b> {opening_hours_table(opening_hours)}"
-					},
-					"question": {
-						"en": "Is this the opening hours of {name}?"
-					},
-					"freeform": {
-						"key": "opening_hours",
-						"type": "opening_hours"
-					}
-				},
-				{
-					"render": {
-						"en": "<b><a href=\"tel: {contact:phone}\">{contact:phone}</a></b>"
-					},
-					"question": {
-						"en": "What is this place's phone number?"
-					},
-					"freeform": {
-						"key": "contact:phone"
-					}
-				},
-				{
-					"render": {
-						"en": "<b><a href = \"mailto: {contact:email}\">{contact:email}</a></b>"
-					},
-					"question": {
-						"en": "What is this place's email address?"
-					},
-					"freeform": {
-						"key": "contact:email"
-					}
-				},
-				{
-					"render": {
-						"en": "<b><a href=\"{contact:website}\">Visit website</a></b>"
-					},
-					"question": {
-						"en": "What is this place's website?"
-					},
-					"freeform": {
-						"key": "contact:website"
-					}
-				},
+				"opening_hours",
+				"phone",
+				"email", "website",
 				{
 					"render": {
 						"en": " <b><a href=\"{contact:facebook}\">Visit their Facebook page</a></b>"
@@ -761,7 +607,7 @@
 						"en": "What is this place's Facebook page?"
 					},
 					"freeform": {
-						"key": "contact:facebook"
+						"key": "contact:facebook", "type": "url"
 					}
 				}
 			],
@@ -778,7 +624,7 @@
 				"enableRelocation": false,
 				"enableImproveAccuraccy": true
 			},
-			"hideUnderlayingFeaturesMinPercentage": 0,
+			
 			"icon": {
 				"render": "https://raw.githubusercontent.com/mapbeks/mapcomplete_lgbt/main/icons/3.svg"
 			},
@@ -1022,6 +868,6 @@
 			"presets": []
 		}
 	],
-	"roamingRenderings": [],
+	
 	"defaultBackgroundId": "osm"
 }
