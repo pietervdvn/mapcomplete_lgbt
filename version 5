@@ -651,7 +651,8 @@
 				},
 				{
 					"tags": [
-						"office=association"
+						"office=association",
+						"lgbtq=welcome"
 					],
 					"title": {
 						"en": "LGBT-friendly organization"
